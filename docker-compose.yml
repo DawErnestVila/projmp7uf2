@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+  php:
+    image: php:8.2.10-apache
+    container_name: projecteUF2
+    volumes:
+      - ./:/var/www/html
+    expose:
+      - 80
+    ports:
+      - 80:80
+    command:
+      [
+        "bash",
+        "-c",
+        "a2enmod rewrite && apache2-foreground && chown -R www-data www-data /var/www/html/Public",
+      ]
